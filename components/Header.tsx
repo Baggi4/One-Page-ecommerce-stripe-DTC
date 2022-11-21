@@ -2,6 +2,7 @@ import { FunctionComponent, useContext } from "react";
 import { Fragment } from "react";
 import { SearchIcon, ShoppingBagIcon } from "@heroicons/react/outline";
 import { Popover, Transition } from "@headlessui/react";
+import Image from "next/image";
 import CartContext from "./context/CartContext";
 import { Stripe } from "stripe";
 import {
@@ -47,19 +48,25 @@ const Header: FunctionComponent = () => {
 
   return (
     <header className="relative bg-white">
-      <nav aria-label="Top" className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div className="h-16 flex items-center justify-between">
+      <nav aria-label="Top" className="shadow-lg">
+          <div className="h-18 flex items-center justify-between">
             {/* Logo */}
-            <div className="flex pl-4">
-              <a href="#">Shopping</a>
+            <div className="flex ml-2">
+              <Image
+                  className="block w-auto"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  alt="tailwind logo"
+                  width={40}
+                  height={40}
+                />
             </div>
 
             <div className="flex items-center justify-end">
               {/* Cart */}
-              <Popover className="mr-4 flow-root text-sm lg:relative lg:ml-8 z-50 ">
+              <Popover className="mr-2 flow-root text-sm lg:relative lg:ml-8 z-50 ">
                 <Popover.Button className="group p-4 flex items-center hover:scale-110">
                   <ShoppingBagIcon
-                    className="flex-shrink-0 h-6 w-6 text-gray-700 group-hover:text-gray-500"
+                    className="flex-shrink-0 h-6 w-6 text-gray-900 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                   <span className="relative content-center h-4 w-4 -ml-7 mt-6  rounded-full bg-black text-white font-semibold text-xs outline outline-1">{items?.length}</span>
